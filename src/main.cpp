@@ -43,14 +43,14 @@ void competition_initialize() {}
 // Small Robot also has one preload
 void autonomous() {
   pros::delay(5000);
-  // Run the catapult once which is 723 degrees to lauch preload
-  catapult.move_relative(-723, 100);
+  // Run the catapult once which is 726 degrees to lauch preload
+  catapult.move_relative(-726, 100);
   puncher_motor.move_relative(-100, 70);
   pros::delay(500); // 250ms not enough time.
   // Then loop to load and launch catapult 11 times.
   for (int i = 0; i < 23; i++) {  // 11 for normal matches
     punch(); // 2 seconds
-    catapult.move_relative(-723, 100);
+    catapult.move_relative(-726, 100);
     pros::delay(250); // reduced from 500ms to 250ms to load while catpult is resetting
   }
 }
@@ -61,7 +61,7 @@ void opcontrol() {
   while (true) {
     // Launch and reload the catapult
     if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
-      catapult.move_relative(-723, 100);
+      catapult.move_relative(-726, 100);
       pros::delay(250);
       punch();
     // if the joystick is not at 0, move the catapult manuelly to fix cam issues
